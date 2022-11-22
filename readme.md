@@ -9,3 +9,12 @@
 `vagrant ssh centos`
 `exit`
 `vagrant ssh ubuntu`
+
+
+### Lab3
+---
+vagrant up
+---
+vagrant ssh
+---
+tail -f /root/sysinfo.sh
