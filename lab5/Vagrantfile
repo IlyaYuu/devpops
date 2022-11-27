@@ -58,7 +58,7 @@ Vagrant.configure("2") do |config|
     # this is used in order to print commands before executing
     set -x
 
-    mv /vagrant/super-service.service /lib/systemd/system/
+    cp /vagrant/super-service.service /lib/systemd/system/
     systemctl daemon-reload
     systemctl start super-service
     systemctl enable super-service
