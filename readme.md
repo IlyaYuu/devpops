@@ -32,5 +32,7 @@
 `vagrant ssh`
 
 `su adminuser | 123`
+
 ctr+D
+
 `su poweruser | iptables -h`
