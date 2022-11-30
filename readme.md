@@ -40,8 +40,13 @@ ctr+D
 ### Lab5
 ---
 `vagrant up`
+
 `vagrant ssh`
+
 `ls folder1`
+
 `ls folder2`
+
 `touch folder1/test.txt`
+
 `ls folder2`
