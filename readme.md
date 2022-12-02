@@ -29,7 +29,7 @@
 ---
 `vagrant up`
 
-`vagrant ssh`
+`vagrant ssh`11
 
 `su adminuser | 123`
 
