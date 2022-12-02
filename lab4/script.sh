@@ -4,10 +4,10 @@ sudo usermod -a -G sudo adminuser #sudo get
 # sudo passwd adminuser 123
 
 #lubos 
-sudo useradd -m poweruser 
+useradd -m poweruser 
 sudo passwd -d poweruser #del pass
-usermod -a -G sudo poweruser #sudo get
-echo 'poweruser ALL=(ALL:ALL) /usr/sbin/iptables' >> /etc/sudoers
+#usermod -a -G sudo poweruser #sudo get
+echo 'poweruser ALL=(ALL:ALL) /usr/sbin/iptables' > /etc/sudoers
 ln -s /home/poweruser/etc/mtab softlink # open uptables
 
 # iptables -t filter --append INPUT -j DROP
