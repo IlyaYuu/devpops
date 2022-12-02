@@ -1,5 +1,7 @@
 sudo useradd -m adminuser
-echo 'adminuser:123' | chpasswd # change user adminuser password to newpassword 
+ADMINPASSWD=$(openssl rand -base64 12)
+echo "Warning! This password shown last time: $ADMINPASSWD"
+echo 'adminuser:$ADMINPASSWD' | chpasswd # change user adminuser password to newpassword 
 sudo usermod -a -G sudo adminuser #sudo get
 # sudo passwd adminuser 123
 
