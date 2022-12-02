@@ -5,6 +5,7 @@ After=network.target
 [Service]
 ExecStart=/vagrant/super-service.sh
 Restart=on-failure
+RestartSec=5s
 User=vagrant
 
 [Install]
