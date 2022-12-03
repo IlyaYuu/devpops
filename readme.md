@@ -1,5 +1,5 @@
 # Devops
-
+    set -x
 ### Lab1
 ---
 `cd lab1`
@@ -29,7 +29,7 @@
 ---
 `vagrant up`
 
-`vagrant ssh`11
+`vagrant ssh`
 
 `su adminuser | 123`
 
