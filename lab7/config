@@ -1,0 +1,6 @@
+Host ilya
+    Hostname 50.31.252.226
+    Port 3122
+    User root
+    DynamicForward 8899
+    LocalForward 8888:localhost:13122
