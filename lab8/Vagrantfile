@@ -1,0 +1,45 @@
+
+Vagrant.configure("2") do |config|
+
+  config.vm.define "centos" do |centos|
+
+    centos.vm.box = "centos/7"
+
+    config.vm.network "forwarded_port", guest: 443, host: 8443, host_ip: "localhost"
+    config.vm.network "forwarded_port", guest: 80, host: 8888, host_ip: "localhost"
+end
+
+
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo yum -y update
+
+    sudo yum install httpd -y
+    sudo yum install mod_ssl -y
+    sudo yum install firewalld
+
+    sudo mkdir /var/www/ssl-test
+    sudo cp -f /vagrant/index.html /usr/share/httpd/noindex/index.html
+
+    sudo systemctl enable firewalld
+    sudo systemctl start firewalld
+    sudo firewall-cmd --state
+
+    sudo systemctl start httpd
+    sudo systemctl enable httpd
+    sudo systemctl status httpd
+
+    sudo cp -f /vagrant/ssl.conf /etc/httpd/conf.d/
+
+    sudo apachectl configtest
+
+    sudo firewall-cmd --permanent --add-service=http
+    sudo firewall-cmd --permanent --add-service=https
+    sudo firewall-cmd --permanent --add-port=80/tcp
+    sudo firewall-cmd --permanent --add-port=443/tcp
+    sudo firewall-cmd --reload
+
+    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/apache-selfsigned.key -out /etc/pki/tls/certs/apache-selfsigned.crt -subj "/C=UA/ST=Lvivska/L=Lviv/O=ITStep/OU=University/CN=127.0.0.1"
+
+  SHELL
+
+end
